@@ -1,10 +1,10 @@
 import React from "react";
 
- function SearchBar(props) {
+ function SearchBar({onSearch}) {
    return (
       <div>
          <input type='search' />
-         <button onClick={props.onSearch}>Agregar</button>
+         <button onClick={(id)=>{onSearch(id)}}>Agregar</button>
       </div>
    );
 }
