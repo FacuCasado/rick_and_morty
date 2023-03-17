@@ -1,0 +1,8 @@
+.h1{
+    color:#40b5cb;
+   -webkit-text-stroke: .5px #c0df40;
+}
+.parrafo{
+    background-color:  rgba(100, 100, 100, 0.7);
+    border-radius: 15px;
+}

@@ -1,0 +1,73 @@
+.divNav{
+    width: 100vw;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(100, 100, 100, .4);
+    border-radius: 20px;
+}
+.divNav:hover{
+    background-color: rgba(100, 100, 100, .5);
+}
+
+.homeButton{
+    cursor: pointer;
+    height: 2rem;
+    width: 4.5rem;
+    border: 0;
+    border-radius: 10px;
+    opacity: 0.7;
+    background-color: #c403ff;
+    font-size: large;
+}
+.homeButton:hover{
+    opacity: 1;
+    transform: translateY(-2px);
+    transition: transform 0.2s ease-in-out;
+    background-image: linear-gradient(to top right, #ff00ea, #c403ff);
+    -webkit-box-shadow: 0px 0px 10px 5px #E600FF;
+    box-shadow: 0px 0px 10px 5px #E600FF;
+}
+.favoritesButton{
+    cursor: pointer;
+    height: 2rem;
+    width: 6.5rem;
+    border: 0;
+    border-radius: 10px;
+    opacity: 0.7;
+    background-color: #c403ff;
+    font-size: large;
+}
+.favoritesButton:hover{
+    opacity: 1;
+    transform: translateY(-2px);
+    transition: transform 0.2s ease-in-out;
+    background-image: linear-gradient(to top right, #ff00ea, #c403ff);
+    -webkit-box-shadow: 0px 0px 10px 5px #E600FF;
+    box-shadow: 0px 0px 10px 5px #E600FF;
+}
+.aboutButton{
+    cursor: pointer;
+    height: 2rem;
+    width: 4.5rem;
+    border: 0;
+    border-radius: 10px;
+    opacity: 0.7;
+    background-color: #c403ff;
+    font-size: large;
+}
+.aboutButton:hover{
+    opacity: 1;
+    transform: translateY(-2px);
+    transition: transform 0.2s ease-in-out;
+    background-image: linear-gradient(to top right, #ff00ea, #c403ff);
+    -webkit-box-shadow: 0px 0px 10px 5px #E600FF;
+    box-shadow: 0px 0px 10px 5px #E600FF;
+}
+
+
+
+
+

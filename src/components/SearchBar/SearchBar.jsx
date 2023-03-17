@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import styles from "./SearchBar.module.css"
 
- function SearchBar({onSearch}) {
+function SearchBar({onSearch}) {
+
+   const[id, setId]=useState("")
+
+   function inputChange(event){
+      setId(event.target.value)
+   }
+
    return (
-      <div>
-         <input type='search' />
-         <button onClick={(id)=>{onSearch(id)}}>Agregar</button>
+      <div className={styles.divSearch}>
+         <input className={styles.searchInput} type='search' onChange={inputChange}/>
+         <button className={styles.searchButton} onClick={()=>{onSearch(id)}}>Add</button>
       </div>
    );
 }
