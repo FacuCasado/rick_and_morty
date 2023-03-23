@@ -57,9 +57,9 @@ function onClose(id){
 
 
   function onSearch(id) {
-    const URL_BASE="https://be-a-rym.up.railway.app/api"
-    const key="82ad9bd6c4f3.467dff24f889a9ac0ead"
-    fetch(`${URL_BASE}/character/${id}?key=${key}`)
+    const URL_BASE="http://localhost:3001/rickandmorty"
+    //const key="82ad9bd6c4f3.467dff24f889a9ac0ead"
+    fetch(`${URL_BASE}/onsearch/${id}`)
        .then((response) => response.json())
        .then((data) => {
           if (data.name && !characters.find((char) => char.id === data.id)) {

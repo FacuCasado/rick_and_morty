@@ -12,7 +12,7 @@
     width: 4.5rem;
     border: 0;
     border-radius: 10px;
-    opacity: 0.7;
+    opacity: 1;
     background-color: #c403ff;
     font-size: large;
     margin-top: 30px;
@@ -34,7 +34,7 @@
 .labels{
     font-size: large;
     background-color: #c403ff;
-    opacity: 0.7;
+    opacity: 1;
     border-radius: 10px;
     height: 2rem;
     width: 6rem;

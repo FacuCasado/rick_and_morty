@@ -11,9 +11,9 @@ function Details(){
 
 
     useEffect(() => {
-      const URL_BASE="https://be-a-rym.up.railway.app/api"
-      const key="82ad9bd6c4f3.467dff24f889a9ac0ead"
-      fetch(`${URL_BASE}/character/${detailId}?key=${key}`)
+      const URL_BASE="http://localhost:3001/rickandmorty/detail"
+      //const key="82ad9bd6c4f3.467dff24f889a9ac0ead"
+      fetch(`${URL_BASE}/${detailId}`)
       .then((response) => response.json())
       .then((char) => {
         if (char.name) {
