@@ -32,7 +32,6 @@ function App () {
 
 function onClose(id){
     setCharacters(characters.filter(char=>char.id!==id))
-    dispatch(deleteFavorite(id))
   }
 
 
@@ -57,7 +56,7 @@ function onClose(id){
 
 
   function onSearch(id) {
-    const URL_BASE="http://localhost:3001/rickandmorty"
+    const URL_BASE="http://localhost:3001"
     //const key="82ad9bd6c4f3.467dff24f889a9ac0ead"
     fetch(`${URL_BASE}/onsearch/${id}`)
        .then((response) => response.json())
@@ -74,12 +73,12 @@ function onClose(id){
   
 
   
-
+//style={{ padding: '25px' }}
 
     
 
   return (
-    <div className='App' style={{ padding: '25px' }}>
+    <div className='App' >
 
       
       <div>
@@ -94,7 +93,7 @@ function onClose(id){
 
     <Routes>
       <Route path="/" element={<Forms login={login}/>} />
-      <Route path="/favorites" element={<Favorites/>}/>
+      <Route path="/favorites" element={<Favorites onClose={onClose}/>}/>
       <Route path="/home" element={<Cards characters={characters} onClose={onClose}/>} ></Route>
       <Route path="/about" element={<About/>}></Route>
       <Route path="/detail/:detailId" element={<Details/>}></Route>

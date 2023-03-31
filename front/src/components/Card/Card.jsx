@@ -1,12 +1,24 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Card.module.css"
 import { Link } from "react-router-dom";
-import { addFavorite, deleteFavorite } from "../../Redux/actions";
-import { connect } from "react-redux";
+import { getFavorites } from "../../Redux/actions";
+import { connect, useDispatch } from "react-redux";
+import axios from "axios"
 
-function Card({id, name, species, gender, image, onClose, addFavorite, deleteFavorite, myFavorites}) { //* desestructuracion del props
+function Card({id, name, species, gender, image, onClose, myFavorites}) { //* desestructuracion del props
    
    const [isFav, setIsFav]=useState(false)
+   const dispatch=useDispatch();
+
+   const addFavorite=async (character)=>{
+      await axios.post("http://localhost:3001/rickandmorty/fav", character)
+      console.log("Añadido")
+   }
+   const deleteFavorite = async (id) => {
+      await axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`);
+      dispatch(getFavorites());
+      console.log("Eliminado");
+    };
 
    function handleFavorite(){
       if(isFav){
@@ -14,9 +26,10 @@ function Card({id, name, species, gender, image, onClose, addFavorite, deleteFav
          deleteFavorite(id)
       }else{
          setIsFav(true)
-         addFavorite({id, name, species, gender, image, onClose})
+         addFavorite({id, name, species, gender, image})
       }
    }
+
 
    useEffect(() => {
       myFavorites.forEach((fav) => {
@@ -25,6 +38,7 @@ function Card({id, name, species, gender, image, onClose, addFavorite, deleteFav
          }
       });
    }, [myFavorites]);
+   
    
    return (
 
@@ -59,14 +73,8 @@ function Card({id, name, species, gender, image, onClose, addFavorite, deleteFav
    );
 }
 
-const mapDispatchToProps=(dispatch)=>{
-   return{
-      addFavorite:(character)=>{dispatch(addFavorite(character))},
-      deleteFavorite:(id)=>{dispatch(deleteFavorite(id))}
-   }
-}
 const mapStateToProps=(state)=>{
    return {myFavorites:state.myFavorites}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Card)
+export default connect(mapStateToProps, null)(Card)

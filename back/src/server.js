@@ -1,26 +1,16 @@
 require("dotenv").config();
-const http = require("http");
-const getCharById= require("./controllers/getCharById")
-const getCharDetail= require("./controllers/getCharDetail")
+const express = require('express');
+const server = express();
+const router=require("./routes/index")
+const cors=require("cors")
+const PORT = process.env.PORT || 3001;
+
+server.use(express.json())
+server.use(cors())
+server.use("/", router)
 
 
-const PORT=3001;
 
-
-http.createServer((req, res)=>{
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    const {url}=req;
-
-    if(url.includes("onsearch")){
-        console.log("a");
-        const id=url.split("/").at(-1);
-        getCharById(res, id);                
-    };
-
-    if(url.includes("detail")){
-        console.log("b");
-        const id=url.split("/").at(-1);
-        getCharDetail(res, id);
-    };
-
-}).listen(PORT, "localhost");
+server.listen(PORT, () => {
+   console.log('Server raised in port ' + PORT);
+});

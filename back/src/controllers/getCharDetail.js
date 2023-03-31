@@ -1,22 +1,23 @@
 const axios = require("axios")
+const { URL, KEY } = process.env;
 
-const { URL, KEY } = process.env
 
-const succesHandler=(response, res)=>{
-    const {id,image,name,gender,species, status}=response.data
-    res.writeHead(200, {"Content-Type":"application/json"})
-    res.end(JSON.stringify({id,image,name,gender,species, status}))
+const getCharDetail = async (req, res)=>{
+
+    try {
+        const {id}=req.params;
+
+        const response = await axios.get(`${URL}/character/${id}?key=${KEY}`)
+        const {name, species, image, gender, origin}=response.data;
+
+        res.status(200).json({id, name, species, image, gender, origin})
+    
+    } catch (error) {
+        res.status(500).json({error:error.message})
+    }
+    
+
+
 };
 
-const errorHandler=(error, res)=>{
-    res.writeHead(500, {"COntent-Type":"text/plain"})
-    res.end(error.message)
-};
-
-const getCharDetail=(res, id)=>{
-    axios.get(`${URL}/character/${id}?key=${KEY}`)
-    .then(response=>succesHandler(response, res))  
-    .catch(error=>errorHandler(error, res));
-}
-
-module.exports=getCharDetail;
+module.exports= getCharDetail;

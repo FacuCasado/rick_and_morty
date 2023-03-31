@@ -11,7 +11,7 @@ function Details(){
 
 
     useEffect(() => {
-      const URL_BASE="http://localhost:3001/rickandmorty/detail"
+      const URL_BASE="http://localhost:3001/detail"
       //const key="82ad9bd6c4f3.467dff24f889a9ac0ead"
       fetch(`${URL_BASE}/${detailId}`)
       .then((response) => response.json())
@@ -32,7 +32,7 @@ function Details(){
 
 
     return(
-        <div>
+        <div style={{ padding: '20px' }}>
           {!character.name && 
             <div className={styles.loader}>
               <span className={styles.loaderText}>loading</span>

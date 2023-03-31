@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     gap: 1em;
     justify-content: center;
+    padding: 25px;
 }
 .cardDiv{
     background-color: rgba(100, 100, 100, .4);

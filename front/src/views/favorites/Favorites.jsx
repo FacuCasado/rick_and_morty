@@ -1,30 +1,36 @@
-import { connect, useDispatch } from "react-redux"
+import { useEffect } from "react";
+import { connect, useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import { deleteFavorite } from "../../Redux/actions";
+import { deleteFavorite, getFavorites } from "../../Redux/actions";
 import styles from "./Favorites.module.css"
+import Card from "../../components/Card/Card"
 
-function Favorites({myFavorites}){
 
+
+function Favorites({onClose}){
+
+    const favorites = useSelector((state) => state.myFavorites);
+    const dispatch=useDispatch();
+
+    
+    useEffect(()=>{
+        dispatch(getFavorites())
+     },[])
    
     return(
        <div className={styles.contenedor}>
         {
-            myFavorites.map((fav)=>{
+            favorites.map((fav)=>{
                 return(
-                    <div className={styles.cardDiv}> 
-
-                        <button className={styles.heart}>❤️</button>
-                        
-                        <Link to={`/detail/${fav.id}`} >
-                            <h2 >{fav.name}</h2>
-                        </Link>
-                
-                        <div className={styles.divh3}>
-                            <h3 >{fav.species}</h3>
-                            <h3 >{fav.gender}</h3>
-                        </div>
-                        <img className={styles.img} src={fav.image} alt="" />
-                    </div>
+                    <Card
+                        key={fav.id}
+                        id={fav.id}
+                        name={fav.name}
+                        species={fav.species}
+                        gender={fav.gender}
+                        image={fav.image}
+                        onClose={onClose}
+                    />
                 )
             })
         }
@@ -32,13 +38,8 @@ function Favorites({myFavorites}){
     )
 }
 
-function mapStateToProps(state){
-    return {
-        myFavorites:state.myFavorites,
-    }
-}
 
-export default connect (mapStateToProps,null)(Favorites)
+export default Favorites
 
 
 
