@@ -8,9 +8,9 @@ const getCharDetail = async (req, res)=>{
         const {id}=req.params;
 
         const response = await axios.get(`${URL}/character/${id}?key=${KEY}`)
-        const {name, species, image, gender, origin}=response.data;
+        const {name, species, image, gender, status, origin}=response.data;
 
-        res.status(200).json({id, name, species, image, gender, origin})
+        res.status(200).json({id, name, species, image, gender, status, origin})
     
     } catch (error) {
         res.status(500).json({error:error.message})

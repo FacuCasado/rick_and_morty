@@ -1,44 +1,37 @@
 const {Router}=require ("express");
 const getCharById= require("../controllers/getCharById");
 const getCharDetail = require("../controllers/getCharDetail");
-let favs= require("../utils/favs")
+const postUser = require('../controllers/postUser');
+const deleteFav = require('../controllers/deleteFav');
+const postFav = require('../controllers/postFav');
+const login = require('../controllers/login');
+const getFav = require('../controllers/getFav')
+
 
 
 const router = Router();
 
 
+//! Rutas de characters
 router.get("/onsearch/:id", getCharById)
 
 router.get("/detail/:id", getCharDetail)
 
 
 
+//! Rutas de favoritos
+router.post("/rickandmorty/fav", postFav);
 
-router.post("/rickandmorty/fav",(req,res)=>{
-    if(req.body){
-        favs.push(req.body)
-        res.status(200).json({status:"ok"})
-    }else{
-        res.status(500).json({error:error.message})
-    }
-});
+router.get("/rickandmorty/fav",getFav);
 
-router.get("/rickandmorty/fav",(req,res)=>{
-    res.status(200).json(favs)
-});
+router.delete("/rickandmorty/fav/:id",deleteFav)
 
-router.delete("/rickandmorty/fav/:id",(req,res)=>{
-    const {id}=req.params;
-    try {
-        favs = favs.filter((char) => char.id !=Number(id));
-        console.log(id);
-        console.log(Number(id));
-        res.status(200).json({success: true})
-    } catch (error) {
-        res.status(400).json({error: error.message})
-    }
-})
 
+
+//! Rutas de usuarios
+router.get("/rickandmorty/login", login);
+
+router.post("/rickandmorty/login", postUser);
 
 
 module.exports= router;

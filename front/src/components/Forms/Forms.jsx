@@ -30,30 +30,31 @@ class Forms extends React.Component{
      
 
         return(
+            
             <form onSubmit={handleSubmit} className={styles.form}>
-             
-
-                <div className={styles.contenedores}>
-                    <label htmlFor="username" className={styles.labels}>Username:</label>
-                    <input className={this.state.errorUser ? styles.error : styles.success} type="text" name="username" value={this.state.username} onChange={handleInput}>
-                    </input>
-                </div>
-                <span className={styles.msgError}>{this.state.errorUser}</span>
-
-
-                <div className={styles.contenedores}>
-                    <label htmlFor="password" className={styles.labels}>Password:</label>
-                    <input className={this.state.errorPass ? styles.error : styles.success} type="password" name="password" value={this.state.password} onChange={handleInput}>
-                    </input>
-                </div>
-                <span className={styles.msgError}>{this.state.errorPass}</span>
-                <div>
-                    <button type='submit' className={styles.logingButton}>Loging</button>
-                </div>
                 
+                <div className={styles.baseForm}>
+                    <div className={styles.contenedores}>
+                        <label htmlFor="username" className={styles.labels}>Username:</label>
+                        <input className={this.state.errorUser ? styles.error : styles.success} type="text" name="username" value={this.state.username} onChange={handleInput}>
+                        </input>
+                    </div>
+                    <span className={styles.mensajes} >*Ingrese un mail válido*</span>
 
+
+                    <div className={styles.contenedores}>
+                        <label htmlFor="password" className={styles.labels}>Password:</label>
+                        <input className={this.state.errorPass ? styles.error : styles.success} type="password" name="password" value={this.state.password} onChange={handleInput}>
+                        </input>
+                    </div>
+                    <span className={styles.mensajes}>*La contraseña debe contener un número*</span>
+                    <div>
+                        <button type='submit' className={styles.logingButton}>Loging</button>
+                    </div>
+                    <span className={styles.mensajes}>¿Primera vez?</span>
+                </div>
             </form>
-
+            
         )
     }
 

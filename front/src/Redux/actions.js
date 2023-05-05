@@ -21,8 +21,8 @@ export const deleteFavorite=(id)=>{
 
 export const getFavorites = () => {
     return async function (dispatch) {
-      const URL_BASE = "http://localhost:3001";
-      const response = await axios.get(`${URL_BASE}/rickandmorty/fav`);
+      const URL_BASE = "http://localhost:3001/rickandmorty/fav";
+      const response = await axios.get(URL_BASE);
       dispatch({ type: GET_FAVORITES, payload: response.data });
     };
   };

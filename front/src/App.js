@@ -83,7 +83,6 @@ function onClose(id){
       
       <div>
       {location.pathname !== '/'&&<Title/>}
-      
       </div>
       
       <div>
